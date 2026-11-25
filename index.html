@@ -122,6 +122,17 @@ h1{font-size:clamp(27px,4vw,38px);line-height:1.18;margin-top:36px;max-width:24c
 .descarga{max-width:820px;margin-top:18px}
 a.boton{display:inline-block;padding:11px 20px;background:var(--petroleo);color:#fff;text-decoration:none;border-radius:15px;font-family:"Montserrat","Poppins",sans-serif;font-weight:600;font-size:15px}
 a.boton:hover{background:var(--azul-medio)}
+@media (max-width:640px){
+.tabla-marco{overflow:visible;border:0;background:none}
+.tabla-marco table{min-width:0;width:100%;display:block}
+.tabla-marco caption{display:block;padding:0 0 8px}
+.tabla-marco thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.tabla-marco tbody,.tabla-marco tr,.tabla-marco td,.tabla-marco tbody th{display:block;width:auto}
+.tabla-marco tr{background:var(--papel);border:1px solid var(--linea);border-radius:8px;margin:0 0 12px;padding:6px 14px 10px}
+.tabla-marco tbody th{border:0;padding:8px 0 4px;font-size:17px;color:var(--petroleo);font-family:"Montserrat","Poppins",sans-serif}
+.tabla-marco td{border:0;border-top:1px solid var(--linea);padding:8px 0}
+.tabla-marco td[data-rotulo]::before{content:attr(data-rotulo);display:block;font-size:13px;font-weight:600;color:var(--pizarra);margin-bottom:2px}
+}
 </style>
 </head>
 <body class="no-js">
@@ -669,6 +680,12 @@ a.boton:hover{background:var(--azul-medio)}
   mostrar((location.hash||'#inicio').slice(1));
   window.addEventListener('load',function(){mostrar((location.hash||'#inicio').slice(1));});
 })();
+</script>
+<script>
+document.querySelectorAll('.tabla-marco table').forEach(function(t){
+  var hs=[].map.call(t.querySelectorAll('thead th'),function(x){return x.textContent.trim();});
+  t.querySelectorAll('tbody tr').forEach(function(r){[].forEach.call(r.children,function(c,i){if(c.tagName==='TD'&&hs[i]){c.setAttribute('data-rotulo',hs[i]);}});});
+});
 </script>
 </body>
 </html>
