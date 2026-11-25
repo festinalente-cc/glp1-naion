@@ -314,19 +314,19 @@ footer div{max-width:1080px;margin:0 auto;padding:22px 20px}
   <p><strong>Antecedentes para endocrinólogos.</strong> La revisión del JCEM (referencia 25) resume las cohortes disponibles y concluye que el riesgo absoluto es bajo y debe ponerse frente al beneficio conocido. En Colombia, la revista de la ACE publicó en 2026 una revisión estructurada de reacciones adversas inusuales de esta clase que trata la NAION como hallazgo muy raro de causalidad no establecida (referencia 27); fue anterior a la advertencia de la FDA y no da conducta.</p>
 
   <h2 id="m-contexto">Beneficios y riesgos en la misma unidad</h2>
-  <p>Todas las cifras están en eventos por cada 10.000 personas durante un año, con y sin el medicamento. En personas de alto riesgo cardiovascular, la diferencia a favor es de decenas de eventos; la de NAION, de 1 a 3.</p>
+  <p>Las tablas 7 y 8 muestran las cifras tal como las publica cada fuente. La Figura 3 las lleva a eventos por 10.000 personas en un año con una conversión ilustrativa: en personas de alto riesgo cardiovascular, la diferencia a favor es de decenas de eventos; la de NAION, de 1 a 3.</p>
 
   <div class="portada">
     <div>
       <ul class="leyenda" aria-label="Leyenda de la figura 3">
-        <li><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="#2F7FC1"/></svg><span><strong>45 eventos cardiovasculares mayores menos</strong> con semaglutida que con placebo: 195 frente a 240. Personas con obesidad y enfermedad cardiovascular (SELECT).</span></li>
-        <li><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="#fff" stroke="#9A5700" stroke-width="2"/><circle cx="9" cy="9" r="3.5" fill="#9A5700"/></svg><span><strong>2 casos más de NAION</strong> observados con GLP-1 que con iSGLT-2: 5,7 frente a 3,7. Adultos de 18 a 65 años con diabetes tipo 2 (Reynolds).</span></li>
+        <li><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="#2F7FC1"/></svg><span><strong>45 eventos cardiovasculares mayores menos</strong> con semaglutida que con placebo (conversión ilustrativa: 195 frente a 240). Personas con obesidad y enfermedad cardiovascular (SELECT).</span></li>
+        <li><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="#fff" stroke="#B3261E" stroke-width="2"/><circle cx="9" cy="9" r="3.5" fill="#B3261E"/></svg><span><strong>2 casos más de NAION</strong> observados con GLP-1 que con iSGLT-2 (conversión ilustrativa: 5,7 frente a 3,7). Adultos de 18 a 65 años con diabetes tipo 2 (Reynolds).</span></li>
       </ul>
       <p>Las dos cifras vienen de poblaciones distintas. La figura compara órdenes de magnitud, no predice el balance de un paciente concreto.</p>
     </div>
     <figure>
-      <canvas class="matriz" id="matriz-balance" role="img" aria-label="Matriz de 10.000 puntos: 45 puntos azules por eventos cardiovasculares menos y 2 anillos ámbar por casos más de NAION."></canvas>
-      <figcaption><strong>Figura 3.</strong> Diferencias observadas por cada 10.000 personas en un año. Conversiones propias a partir de los datos publicados. Fuentes: referencias 20 y 13.</figcaption>
+      <canvas class="matriz" id="matriz-balance" role="img" aria-label="Matriz de 10.000 puntos: 45 puntos azules por eventos cardiovasculares menos y 2 anillos rojos por casos más de NAION."></canvas>
+      <figcaption><strong>Figura 3.</strong> Diferencias por cada 10.000 personas en un año. Conversión ilustrativa: el riesgo acumulado de cada estudio dividido por su seguimiento, que supone un riesgo constante en el tiempo. No son cifras publicadas; las publicadas están en las tablas 7 y 8. Fuentes: referencias 20 y 13.</figcaption>
     </figure>
   </div>
 
@@ -450,7 +450,7 @@ footer div{max-width:1080px;margin:0 auto;padding:22px 20px}
 
   <h2>Qué no hacer</h2>
   <div class="clave"><p><strong>No suspenda el medicamento por su cuenta.</strong> Dejarlo también tiene riesgos: puede subir el azúcar, recuperarse el peso y perderse la protección del corazón.</p></div>
-  <p>Para comparar: entre 10.000 personas con obesidad y enfermedad del corazón que usaron uno de estos medicamentos durante un año, hubo unos 45 infartos, derrames o muertes de origen cardíaco menos que entre quienes no lo usaron. En ese mismo tiempo, el problema del ojo se observó en unas 2 personas más.</p>
+  <p>Para comparar: entre 10.000 personas con obesidad y enfermedad del corazón que usaron uno de estos medicamentos durante un año, hubo unos 45 infartos, derrames o muertes de origen cardíaco menos que entre quienes no lo usaron. En ese mismo tiempo, el problema del ojo se observó en unas 2 personas más. Son cálculos aproximados para dar una idea del orden de magnitud, no cifras exactas.</p>
 
   <h2>Quién debe hablar antes con su médico</h2>
   <ul>
@@ -550,8 +550,8 @@ footer div{max-width:1080px;margin:0 auto;padding:22px 20px}
     for(var k=0;k<n;k++){
       var p=POS[k], cx=m+paso*((p%100)+0.5), cy=m+paso*(Math.floor(p/100)+0.5);
       x.beginPath();x.arc(cx,cy,Math.max(7,paso*2.2),0,6.2832);
-      x.fillStyle='#FFFFFF';x.fill();x.lineWidth=2;x.strokeStyle='#9A5700';x.stroke();
-      x.beginPath();x.arc(cx,cy,Math.max(3.5,paso*1.1),0,6.2832);x.fillStyle='#9A5700';x.fill();
+      x.fillStyle='#FFFFFF';x.fill();x.lineWidth=2;x.strokeStyle='#B3261E';x.stroke();
+      x.beginPath();x.arc(cx,cy,Math.max(3.5,paso*1.1),0,6.2832);x.fillStyle='#B3261E';x.fill();
     }
   }
   function base(c){
@@ -575,8 +575,8 @@ footer div{max-width:1080px;margin:0 auto;padding:22px 20px}
     }
     for(var n=0;n<2;n++){
       var q=POS[n], qx=g.m+g.paso*((q%100)+0.5), qy=g.m+g.paso*(Math.floor(q/100)+0.5);
-      x.beginPath();x.arc(qx,qy,Math.max(7,g.paso*2.2),0,6.2832);x.fillStyle='#FFFFFF';x.fill();x.lineWidth=2;x.strokeStyle='#9A5700';x.stroke();
-      x.beginPath();x.arc(qx,qy,Math.max(3.5,g.paso*1.1),0,6.2832);x.fillStyle='#9A5700';x.fill();
+      x.beginPath();x.arc(qx,qy,Math.max(7,g.paso*2.2),0,6.2832);x.fillStyle='#FFFFFF';x.fill();x.lineWidth=2;x.strokeStyle='#B3261E';x.stroke();
+      x.beginPath();x.arc(qx,qy,Math.max(3.5,g.paso*1.1),0,6.2832);x.fillStyle='#B3261E';x.fill();
     }
   }
   function dibujarTodas(){
