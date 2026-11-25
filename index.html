@@ -115,6 +115,13 @@ h1{font-size:clamp(27px,4vw,38px);line-height:1.18;margin-top:36px;max-width:24c
 .clave{background:none;border-left:0;border-top:2px solid var(--petroleo);border-bottom:1px solid var(--linea);padding:14px 0 16px;margin:24px 0;max-width:62ch}
 .clave p{font-size:17px}
 .clave p strong:first-child{display:block;font-family:"Montserrat","Poppins",sans-serif;font-weight:600;font-size:21px;line-height:1.3;color:var(--petroleo);margin-bottom:6px}
+.comunicado{padding:0;overflow:hidden;box-shadow:0 1px 6px rgba(13,15,28,.08)}
+.comunicado img.memb{display:block;width:100%;height:auto}
+.memb-cuerpo{padding:20px clamp(22px,7vw,84px) 36px}
+.comunicado h1{font-size:26px}
+.descarga{max-width:820px;margin-top:18px}
+a.boton{display:inline-block;padding:11px 20px;background:var(--petroleo);color:#fff;text-decoration:none;border-radius:15px;font-family:"Montserrat","Poppins",sans-serif;font-weight:600;font-size:15px}
+a.boton:hover{background:var(--azul-medio)}
 </style>
 </head>
 <body class="no-js">
@@ -515,6 +522,8 @@ h1{font-size:clamp(27px,4vw,38px);line-height:1.18;margin-top:36px;max-width:24c
 <!-- ===================== COMUNICADO ===================== -->
 <section class="vista" id="comunicado" aria-labelledby="t-comunicado">
   <article class="comunicado">
+    <img class="memb" src="membrete-encabezado.jpg" alt="Asociación Colombiana de Endocrinología, Diabetes y Metabolismo. Fundada en 1950">
+    <div class="memb-cuerpo">
     <h1 id="t-comunicado">Agonistas GLP-1 y visión: qué se sabe y qué hacer</h1>
     <p class="firma">Bogotá, [fecha por definir]. Asociación Colombiana de Endocrinología, Diabetes y Metabolismo (ACE)</p>
     <p>El 9 de noviembre de 2026 la agencia de medicamentos de Estados Unidos (FDA) pidió incluir, en la información de todos los agonistas del receptor de GLP-1, una advertencia sobre un posible aumento del riesgo de neuropatía óptica isquémica anterior no arterítica (NAION). En Colombia la medida abarca semaglutida, liraglutida, dulaglutida, tirzepatida y lixisenatida.</p>
@@ -528,8 +537,10 @@ h1{font-size:clamp(27px,4vw,38px);line-height:1.18;margin-top:36px;max-width:24c
       <li><strong>Los controles habituales de retina en personas con diabetes siguen igual.</strong></li>
     </ol>
     <p>La explicación completa, con las cifras y sus fuentes, está en este sitio: <a href="#medicos">para médicos</a> y <a href="#publico">para público general</a>.</p>
-    <p class="no-imprimir"><button type="button" onclick="window.print()">Imprimir el comunicado</button></p>
+    </div>
+    <img class="memb" src="membrete-pie.jpg" alt="Tel. (601) 5327755. Carrera 15 No. 98-42 Of. 303, Bogotá, Colombia">
   </article>
+  <p class="no-imprimir descarga"><a class="boton" href="Comunicado_ACE_GLP1_NAION.pdf" target="_blank" rel="noopener">Abrir el comunicado en PDF para imprimir</a></p>
 </section>
 
 <aside class="pendientes" aria-label="Pendientes antes de publicar">
@@ -545,7 +556,7 @@ h1{font-size:clamp(27px,4vw,38px);line-height:1.18;margin-top:36px;max-width:24c
 
 </main>
 
-<footer><div>Asociación Colombiana de Endocrinología, Diabetes y Metabolismo (ACE). Contenido informativo; no sustituye el juicio clínico ni la consulta médica. Actualizado el 18 de noviembre de 2026.</div></footer>
+<footer><div>Asociación Colombiana de Endocrinología, Diabetes y Metabolismo (ACE). Contenido informativo; no sustituye el juicio clínico ni la consulta médica. Actualizado el 24 de noviembre de 2026.</div></footer>
 
 <script>
 (function(){
