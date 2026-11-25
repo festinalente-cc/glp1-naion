@@ -7,18 +7,18 @@
 <title>Agonistas GLP-1 y visión (NAION) | Versión para evaluación</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --fondo:#FAFBFC; --papel:#FFFFFF; --tinta:#17212B; --pizarra:#55616B;
-  --petroleo:#0F4C81; --petroleo-suave:#E4EEF7; --azul-medio:#2F7FC1; --ambar:#9A5700; --ambar-suave:#FBF1DF;
+  --fondo:#FAFBFC; --papel:#FFFFFF; --tinta:#0D0F1C; --pizarra:#55616B;
+  --petroleo:#004393; --petroleo-suave:#E5EDF7; --azul-medio:#2875CD; --ambar:#9A5700; --ambar-suave:#FBF1DF;
   --linea:#CFD8DC; --punto:#C3CDD2;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{margin:0;background:var(--fondo);color:var(--tinta);
-  font-family:"Atkinson Hyperlegible",Verdana,"Segoe UI",sans-serif;font-size:18px;line-height:1.55}
+  font-family:"Poppins",Verdana,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}
 a{color:var(--petroleo);text-underline-offset:3px}
 a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{
   outline:3px solid var(--ambar);outline-offset:2px}
@@ -94,6 +94,10 @@ footer div{max-width:1080px;margin:0 auto;padding:22px 20px}
   body{background:#fff;font-size:12pt}
   .comunicado{border:0;padding:0}
 }
+h1,h2,h3,caption,.puerta strong,nav.principal a{font-family:"Montserrat","Poppins",sans-serif}
+h1{font-weight:700;color:var(--petroleo)}h2{font-weight:600;color:var(--petroleo)}
+.puerta{border-radius:15px}
+b,strong,tbody th{font-weight:600}
 </style>
 </head>
 <body class="no-js">
@@ -339,7 +343,7 @@ footer div{max-width:1080px;margin:0 auto;padding:22px 20px}
   <div class="portada">
     <div>
       <ul class="leyenda" aria-label="Leyenda de la figura 3">
-        <li><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="#2F7FC1"/></svg><span><strong>45 eventos cardiovasculares mayores menos</strong> con semaglutida que con placebo (conversión ilustrativa: 195 frente a 240). Personas con obesidad y enfermedad cardiovascular (SELECT).</span></li>
+        <li><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="#2875CD"/></svg><span><strong>45 eventos cardiovasculares mayores menos</strong> con semaglutida que con placebo (conversión ilustrativa: 195 frente a 240). Personas con obesidad y enfermedad cardiovascular (SELECT).</span></li>
         <li><svg width="18" height="18" aria-hidden="true"><circle cx="9" cy="9" r="7" fill="#fff" stroke="#B3261E" stroke-width="2"/><circle cx="9" cy="9" r="3.5" fill="#B3261E"/></svg><span><strong>2 casos más de NAION</strong> observados con GLP-1 que con iSGLT-2 (conversión ilustrativa: 5,7 frente a 3,7). Adultos de 18 a 65 años con diabetes tipo 2 (Reynolds).</span></li>
       </ul>
       <p>Las dos cifras vienen de poblaciones distintas. La figura compara órdenes de magnitud, no predice el balance de un paciente concreto.</p>
@@ -593,7 +597,7 @@ footer div{max-width:1080px;margin:0 auto;padding:22px 20px}
       var p; do{p=sig()%10000;}while(usados[p]||POS.indexOf(p)>-1); usados[p]=1;
       var cx=g.m+g.paso*((p%100)+0.5), cy=g.m+g.paso*(Math.floor(p/100)+0.5);
       x.beginPath();x.arc(cx,cy,Math.max(4.5,g.paso*1.4),0,6.2832);x.fillStyle='#FFFFFF';x.fill();
-      x.beginPath();x.arc(cx,cy,Math.max(3.5,g.paso*1.1),0,6.2832);x.fillStyle='#2F7FC1';x.fill();
+      x.beginPath();x.arc(cx,cy,Math.max(3.5,g.paso*1.1),0,6.2832);x.fillStyle='#2875CD';x.fill();
     }
     for(var n=0;n<2;n++){
       var q=POS[n], qx=g.m+g.paso*((q%100)+0.5), qy=g.m+g.paso*(Math.floor(q/100)+0.5);
