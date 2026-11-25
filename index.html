@@ -141,10 +141,14 @@ dialog#puerta-medicos p{margin:0 0 20px;font-size:16px}
 dialog#puerta-medicos .acciones{display:flex;flex-direction:column;gap:10px}
 dialog#puerta-medicos button{font:600 16px "Montserrat","Poppins",sans-serif;padding:13px 18px;border-radius:15px;border:2px solid var(--petroleo);background:var(--petroleo);color:#fff;cursor:pointer;min-height:48px}
 dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
+.sin-rol nav.principal a[data-vista="medicos"],.sin-rol nav.principal a[data-vista="publico"],
+.rol-medico nav.principal a[data-vista="publico"],.rol-publico nav.principal a[data-vista="medicos"],
+.rol-medico a.puerta[href="#publico"],.rol-publico a.puerta[href="#medicos"],.sin-rol #cambiar-rol{display:none}
+#cambiar-rol{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
 </style>
 </head>
 <body class="no-js">
-<div class="aviso-eval" role="note">Versión para evaluación. Contenido no definitivo: no difundir este enlace. Información con corte al 24 de noviembre de 2026.</div>
+<div class="aviso-eval" role="note">Versión para evaluación. Contenido no definitivo: no difundir este enlace. Información con corte al 25 de noviembre de 2026.</div>
 
 <header class="sitio">
   <div class="barra">
@@ -576,7 +580,7 @@ dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
 
 </main>
 
-<footer><div>Asociación Colombiana de Endocrinología, Diabetes y Metabolismo (ACE). Elaborado por el Comité de Tecnología TIDES y el Comité de Diabetes de la ACE. Este contenido no recibió financiación y se elaboró sin participación de la industria farmacéutica. Contenido informativo; no sustituye el juicio clínico ni la consulta médica. Actualizado el 24 de noviembre de 2026.</div></footer>
+<footer><div>Asociación Colombiana de Endocrinología, Diabetes y Metabolismo (ACE). Elaborado por el Comité de Tecnología TIDES y el Comité de Diabetes de la ACE. Este contenido no recibió financiación y se elaboró sin participación de la industria farmacéutica. Contenido informativo; no sustituye el juicio clínico ni la consulta médica. Actualizado el 25 de noviembre de 2026. <button type="button" id="cambiar-rol" class="no-imprimir">Elegir de nuevo el tipo de visitante</button></div></footer>
 
 <script>
 (function(){
@@ -701,17 +705,33 @@ dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
 </dialog>
 <script>
 (function(){
-  var d=document.getElementById('puerta-medicos'); if(!d||!d.showModal){return;}
-  var ok=false; try{ok=sessionStorage.getItem('prof')==='1';}catch(e){}
-  function revisar(){
-    var m=document.getElementById('medicos'), todo=document.querySelectorAll('.vista.activa').length>1;
-    if(!ok&&!todo&&m.classList.contains('activa')&&!d.open){d.showModal();}
+  var d=document.getElementById('puerta-medicos'), raiz=document.documentElement;
+  var rol=null; try{rol=sessionStorage.getItem('rol');}catch(e){}
+  if(rol!=='medico'&&rol!=='publico'){rol=null;}
+  function esTodo(){return document.querySelectorAll('.vista.activa').length>1;}
+  function ir(v){var a=document.querySelector('nav.principal a[href="#'+v+'"]'); if(a){a.click();}}
+  function aplicar(){
+    raiz.classList.toggle('rol-medico',rol==='medico'); raiz.classList.toggle('rol-publico',rol==='publico'); raiz.classList.toggle('sin-rol',!rol);
+    if(!rol){return;}
+    var otro=rol==='medico'?'publico':'medicos';
+    document.querySelectorAll('.vista a[href="#'+otro+'"]:not(.puerta)').forEach(function(a){a.replaceWith(document.createTextNode(a.textContent));});
   }
-  function irPublico(){ if(d.open){d.close();} var a=document.querySelector('nav.principal a[href="#publico"]'); if(a){a.click();} }
-  document.getElementById('pm-si').addEventListener('click',function(){ok=true;try{sessionStorage.setItem('prof','1');}catch(e){} d.close();});
-  document.getElementById('pm-no').addEventListener('click',irPublico);
-  d.addEventListener('cancel',function(e){e.preventDefault();irPublico();});
-  new MutationObserver(revisar).observe(document.getElementById('medicos'),{attributes:true,attributeFilter:['class']});
+  function fijar(r){rol=r;try{sessionStorage.setItem('rol',r);}catch(e){} aplicar();}
+  function revisar(){
+    if(esTodo()){raiz.classList.remove('rol-medico','rol-publico','sin-rol');return;}
+    var m=document.getElementById('medicos').classList.contains('activa'), p=document.getElementById('publico').classList.contains('activa');
+    if(m){ if(rol==='publico'){ir('publico');} else if(!rol){ if(d&&d.showModal){ if(!d.open){d.showModal();} } else {fijar('medico');} } }
+    else if(p){ if(rol==='medico'){ir('medicos');} else if(!rol){fijar('publico');} }
+  }
+  if(d){
+    document.getElementById('pm-si').addEventListener('click',function(){fijar('medico');d.close();});
+    document.getElementById('pm-no').addEventListener('click',function(){fijar('publico');d.close();ir('publico');});
+    d.addEventListener('cancel',function(e){e.preventDefault();d.close();ir('inicio');});
+  }
+  var c=document.getElementById('cambiar-rol');
+  if(c){c.addEventListener('click',function(){try{sessionStorage.removeItem('rol');}catch(e){} location.hash='#inicio'; location.reload();});}
+  ['medicos','publico'].forEach(function(v){new MutationObserver(revisar).observe(document.getElementById(v),{attributes:true,attributeFilter:['class']});});
+  aplicar();
   window.addEventListener('load',function(){setTimeout(revisar,50);});
 })();
 </script>
