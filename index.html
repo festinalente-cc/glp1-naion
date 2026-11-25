@@ -133,6 +133,14 @@ a.boton:hover{background:var(--azul-medio)}
 .tabla-marco td{border:0;border-top:1px solid var(--linea);padding:8px 0}
 .tabla-marco td[data-rotulo]::before{content:attr(data-rotulo);display:block;font-size:13px;font-weight:600;color:var(--pizarra);margin-bottom:2px}
 }
+.definicion{font-size:16px;color:var(--pizarra);border-left:0;max-width:60ch}
+dialog#puerta-medicos{border:0;border-radius:15px;padding:28px 30px;max-width:min(92vw,520px);color:var(--tinta);box-shadow:0 10px 40px rgba(13,15,28,.25)}
+dialog#puerta-medicos::backdrop{background:rgba(245,248,252,.96)}
+dialog#puerta-medicos h2{margin:0 0 10px;font-size:23px}
+dialog#puerta-medicos p{margin:0 0 20px;font-size:16px}
+dialog#puerta-medicos .acciones{display:flex;flex-direction:column;gap:10px}
+dialog#puerta-medicos button{font:600 16px "Montserrat","Poppins",sans-serif;padding:13px 18px;border-radius:15px;border:2px solid var(--petroleo);background:var(--petroleo);color:#fff;cursor:pointer;min-height:48px}
+dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
 </style>
 </head>
 <body class="no-js">
@@ -159,6 +167,7 @@ a.boton:hover{background:var(--azul-medio)}
     <div>
       <h1 id="t-inicio">Qué dice la advertencia sobre GLP-1 y visión, y qué hacer</h1>
       <p class="entrada">El 9 de noviembre de 2026 la agencia de medicamentos de Estados Unidos (FDA) pidió agregar una advertencia a todos los agonistas GLP-1 por un problema raro del nervio óptico llamado NAION. Ningún medicamento fue retirado.</p>
+      <p class="definicion"><strong>NAION</strong> es la sigla en inglés de neuropatía óptica isquémica anterior no arterítica: el nervio que lleva la imagen del ojo al cerebro se queda de repente sin suficiente riego de sangre, y eso puede causar pérdida de visión en un ojo.</p>
       <div class="puertas">
         <a class="puerta" href="#medicos"><strong>Soy profesional de la salud</strong>Conducta práctica, cifras con su denominador, causalidad y posturas de cada organismo.</a>
         <a class="puerta" href="#publico"><strong>Uso o pienso usar estos medicamentos</strong>Qué tan probable es, qué síntomas vigilar y qué hacer.</a>
@@ -176,7 +185,7 @@ a.boton:hover{background:var(--azul-medio)}
 <!-- ===================== MÉDICOS ===================== -->
 <section class="vista" id="medicos" aria-labelledby="t-medicos">
   <h1 id="t-medicos">GLP-1 y NAION: guía para quien formula</h1>
-  <p class="entrada">Varios estudios encuentran una asociación entre estos medicamentos y la NAION. El evento es raro y no está demostrado que el medicamento lo cause. No se requiere valoración por oftalmología antes de formular.</p>
+  <p class="entrada">Varios estudios encuentran una asociación entre estos medicamentos y la neuropatía óptica isquémica anterior no arterítica (NAION). El evento es raro y no está demostrado que el medicamento lo cause. No se requiere valoración por oftalmología antes de formular.</p>
 
   <ul class="indice" aria-label="Contenido de esta página">
     <li><a href="#m-conducta">Conducta práctica</a></li>
@@ -482,6 +491,7 @@ a.boton:hover{background:var(--azul-medio)}
 
   <h2>Qué pasó</h2>
   <p>En noviembre de 2026, la agencia de medicamentos de Estados Unidos pidió agregar una advertencia a un grupo de medicamentos para la diabetes y el peso. La advertencia habla de un problema poco frecuente del nervio del ojo. Ningún medicamento fue retirado.</p>
+  <p>Los médicos lo llaman NAION, la sigla en inglés de neuropatía óptica isquémica anterior no arterítica. Ocurre cuando el nervio que lleva la imagen del ojo al cerebro se queda de repente sin suficiente sangre. Puede causar pérdida de visión en un ojo.</p>
   <p>Estos medicamentos son semaglutida, liraglutida, dulaglutida, tirzepatida y lixisenatida.</p>
 
   <h2>Qué tan probable es</h2>
@@ -679,6 +689,30 @@ a.boton:hover{background:var(--azul-medio)}
 
   mostrar((location.hash||'#inicio').slice(1));
   window.addEventListener('load',function(){mostrar((location.hash||'#inicio').slice(1));});
+})();
+</script>
+<dialog id="puerta-medicos" aria-labelledby="pm-t">
+  <h2 id="pm-t">Contenido para profesionales de la salud</h2>
+  <p>Esta sección usa lenguaje técnico y está dirigida a médicos y otros profesionales de la salud. Si usted usa o piensa usar estos medicamentos, la información para público general explica lo mismo en palabras sencillas.</p>
+  <div class="acciones">
+    <button type="button" id="pm-si">Soy profesional de la salud</button>
+    <button type="button" class="sec" id="pm-no">Ir a la información para público general</button>
+  </div>
+</dialog>
+<script>
+(function(){
+  var d=document.getElementById('puerta-medicos'); if(!d||!d.showModal){return;}
+  var ok=false; try{ok=sessionStorage.getItem('prof')==='1';}catch(e){}
+  function revisar(){
+    var m=document.getElementById('medicos'), todo=document.querySelectorAll('.vista.activa').length>1;
+    if(!ok&&!todo&&m.classList.contains('activa')&&!d.open){d.showModal();}
+  }
+  function irPublico(){ if(d.open){d.close();} var a=document.querySelector('nav.principal a[href="#publico"]'); if(a){a.click();} }
+  document.getElementById('pm-si').addEventListener('click',function(){ok=true;try{sessionStorage.setItem('prof','1');}catch(e){} d.close();});
+  document.getElementById('pm-no').addEventListener('click',irPublico);
+  d.addEventListener('cancel',function(e){e.preventDefault();irPublico();});
+  new MutationObserver(revisar).observe(document.getElementById('medicos'),{attributes:true,attributeFilter:['class']});
+  window.addEventListener('load',function(){setTimeout(revisar,50);});
 })();
 </script>
 <script>
