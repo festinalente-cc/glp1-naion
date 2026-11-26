@@ -143,7 +143,7 @@ dialog#puerta-medicos button{font:600 16px "Montserrat","Poppins",sans-serif;pad
 dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
 .sin-rol nav.principal a[data-vista="medicos"],.sin-rol nav.principal a[data-vista="publico"],
 .rol-medico nav.principal a[data-vista="publico"],.rol-publico nav.principal a[data-vista="medicos"],
-.rol-medico a.puerta[href="#publico"],.rol-publico a.puerta[href="#medicos"],.sin-rol #cambiar-rol{display:none}
+.rol-medico a.puerta[href="#publico"],.rol-publico a.puerta[href="#medicos"],.sin-rol #cambiar-rol,.rol-medico nav.principal a[data-vista="inicio"],.rol-publico nav.principal a[data-vista="inicio"]{display:none}
 #cambiar-rol{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
 </style>
 </head>
@@ -712,6 +712,8 @@ dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
   function ir(v){var a=document.querySelector('nav.principal a[href="#'+v+'"]'); if(a){a.click();}}
   function aplicar(){
     raiz.classList.toggle('rol-medico',rol==='medico'); raiz.classList.toggle('rol-publico',rol==='publico'); raiz.classList.toggle('sin-rol',!rol);
+    var propia=rol==='medico'?'medicos':(rol==='publico'?'publico':'inicio');
+    var marca=document.querySelector('a.marca'); if(marca){marca.setAttribute('href','#'+propia);}
     if(!rol){return;}
     var otro=rol==='medico'?'publico':'medicos';
     document.querySelectorAll('.vista a[href="#'+otro+'"]:not(.puerta)').forEach(function(a){a.replaceWith(document.createTextNode(a.textContent));});
@@ -720,6 +722,7 @@ dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
   function revisar(){
     if(esTodo()){raiz.classList.remove('rol-medico','rol-publico','sin-rol');return;}
     var m=document.getElementById('medicos').classList.contains('activa'), p=document.getElementById('publico').classList.contains('activa');
+    if(rol&&document.getElementById('inicio').classList.contains('activa')){ir(rol==='medico'?'medicos':'publico');return;}
     if(m){ if(rol==='publico'){ir('publico');} else if(!rol){ if(d&&d.showModal){ if(!d.open){d.showModal();} } else {fijar('medico');} } }
     else if(p){ if(rol==='medico'){ir('medicos');} else if(!rol){fijar('publico');} }
   }
@@ -730,7 +733,7 @@ dialog#puerta-medicos button.sec{background:#fff;color:var(--petroleo)}
   }
   var c=document.getElementById('cambiar-rol');
   if(c){c.addEventListener('click',function(){try{sessionStorage.removeItem('rol');}catch(e){} location.hash='#inicio'; location.reload();});}
-  ['medicos','publico'].forEach(function(v){new MutationObserver(revisar).observe(document.getElementById(v),{attributes:true,attributeFilter:['class']});});
+  ['inicio','medicos','publico'].forEach(function(v){new MutationObserver(revisar).observe(document.getElementById(v),{attributes:true,attributeFilter:['class']});});
   aplicar();
   window.addEventListener('load',function(){setTimeout(revisar,50);});
 })();
